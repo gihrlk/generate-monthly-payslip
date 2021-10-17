@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +21,8 @@ public class PayslipController {
 		this.payslipService = payslipService;
 	}
 
-	@GetMapping("/payslip/generate")
-	public ResponseEntity<MonthlyPayslip> getMonthlyPaylip(@RequestParam String name,
+	@GetMapping("/payslip/generate/{name}")
+	public ResponseEntity<MonthlyPayslip> getMonthlyPaylip(@PathVariable String name,
 			@RequestParam BigDecimal annualSalary) {
 		Employee employe = new Employee(name, annualSalary);
 		return ResponseEntity.ok(payslipService.generateMonthlyPayslip(employe));

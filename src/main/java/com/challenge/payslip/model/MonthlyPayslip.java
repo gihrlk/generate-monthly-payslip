@@ -32,42 +32,34 @@ public class MonthlyPayslip {
 		this.netIncome = netIncome;
 	}
 
-	@JsonProperty("name")
 	public String getName() {
 		return name;
 	}
 
-	@JsonProperty("name")
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	@JsonProperty("grossIncome")
 	public BigDecimal getGrossIncome() {
 		return grossIncome;
 	}
 
-	@JsonProperty("grossIncome")
 	public void setGrossIncome(BigDecimal grossIncome) {
 		this.grossIncome = grossIncome;
 	}
 
-	@JsonProperty("incomeTax")
 	public BigDecimal getIncomeTax() {
 		return incomeTax;
 	}
 
-	@JsonProperty("incomeTax")
 	public void setIncomeTax(BigDecimal incomeTax) {
 		this.incomeTax = incomeTax;
 	}
 
-	@JsonProperty("netIncome")
 	public BigDecimal getNetIncome() {
 		return netIncome;
 	}
 
-	@JsonProperty("netIncome")
 	public void setNetIncome(BigDecimal netIncome) {
 		this.netIncome = netIncome;
 	}

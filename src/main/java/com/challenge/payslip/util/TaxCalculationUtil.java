@@ -57,10 +57,10 @@ public class TaxCalculationUtil {
 
 	private static BigDecimal calculateTax(BigDecimal annualSalary, TaxRate taxRate) {
 		if (annualSalary.compareTo(taxRate.lowerThreshold) > 0) {
-			if (annualSalary.compareTo(taxRate.upperThreshold) > 0) {
-				return calculateTax(taxRate.lowerThreshold, taxRate.upperThreshold, taxRate.rate);
-			} else if (taxRate.upperThreshold == null || annualSalary.compareTo(taxRate.upperThreshold) <= 0) {
+			if (taxRate.upperThreshold == null || annualSalary.compareTo(taxRate.upperThreshold) <= 0) {
 				return calculateTax(taxRate.lowerThreshold, annualSalary, taxRate.rate);
+			} else if (annualSalary.compareTo(taxRate.upperThreshold) > 0) {
+				return calculateTax(taxRate.lowerThreshold, taxRate.upperThreshold, taxRate.rate);
 			}
 		}
 

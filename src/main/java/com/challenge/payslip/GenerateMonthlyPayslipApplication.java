@@ -24,7 +24,7 @@ public class GenerateMonthlyPayslipApplication implements CommandLineRunner {
 	final static Logger LOGGER = LogManager.getLogger(GenerateMonthlyPayslipApplication.class);
 
 	private static final String PAYSLIP_API_ENDPOINT = "http://localhost:{port}/payslip/";
-	
+
 	@Value("${server.port}")
 	private String serverPort;
 
@@ -49,9 +49,9 @@ public class GenerateMonthlyPayslipApplication implements CommandLineRunner {
 	private void getEmployeeMonthlyPayslip(Employee employee) {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<MonthlyPayslip> response = restTemplate.exchange(
-				PAYSLIP_API_ENDPOINT + "generate?name={employeeName}&annualSalary={annualSalary}", HttpMethod.GET,
-				new HttpEntity<Object>(generateHeaders()), MonthlyPayslip.class,
-				serverPort, employee.getName(), employee.getAnnualSalary());
+				PAYSLIP_API_ENDPOINT + "generate/" + employee.getName() + "?annualSalary={annualSalary}",
+				HttpMethod.GET, new HttpEntity<Object>(generateHeaders()), MonthlyPayslip.class, serverPort,
+				employee.getAnnualSalary());
 		MonthlyPayslip monthlyPayslip = response.getBody();
 		LOGGER.info("Monthly Payslip for: {}", () -> monthlyPayslip.getName());
 		LOGGER.info("Gross Monthly Income: ${}", () -> monthlyPayslip.getGrossIncome());
